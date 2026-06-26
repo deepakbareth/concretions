@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@200;300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
+
+  --color-gold-light: #ebdcb9;
+  --color-gold-accent: #c5a880;
+
+  --color-bg-linen: #e8e3d9;
+  --color-bg-olive: #3e473a;
+  --color-bg-moody: #161715;
+
+  --color-text-charcoal: #1a1c18;
+  --color-text-linen: #f5f2eb;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg-moody);
+    color: var(--color-text-linen);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    letter-spacing: 0.05em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-moody);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-olive);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-accent);
+}
+
+/* Luxury card layouts */
+.glass-panel {
+  background: rgba(22, 23, 21, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.underline-animation {
+  position: relative;
+}
+
+.underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Custom Overlapping Text Placement (Emily Hotel Style) */
+.overlap-heading-top {
+  font-size: clamp(4rem, 8vw, 10rem);
+  line-height: 0.8;
+  letter-spacing: 0.08em;
+  z-index: 10;
+}
+
+.overlap-heading-bottom {
+  font-size: clamp(4rem, 8vw, 10rem);
+  line-height: 0.8;
+  letter-spacing: 0.08em;
+  margin-top: -0.2em;
+  z-index: 20;
+}
+
+/* Layout Drawings */
+.drawing-line {
+  stroke: rgba(26, 28, 24, 0.12);
+  fill: none;
+  stroke-width: 1;
+}
+
+.drawing-line-white {
+  stroke: rgba(245, 242, 235, 0.1);
+  fill: none;
+  stroke-width: 1;
+}
+
+/* Keyframe animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
